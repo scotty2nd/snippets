@@ -45,20 +45,20 @@ function initialize() {
 		});
 		
 		var infoBubble = new InfoBubble({																										//Existiert noch kein InfoBubble dann erstelle ein neues
-					content: '<div class="mapInfoBox">' + Titel + '<br/><span>' + Anschrift + '<br/>' + Postleitzahl + ' ' + Ort + '</span></div><div class="mapInfoBoxSideBar"><a id="Fahrrad" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=b" title=""><div><img src="img/FahrradIcon.png" alt="FahrradIcon"></div></a><a id="Auto" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=d" title=""><div><img src="img/AutoIcon.png" alt="AutoIcon"></div></a><a id="Bus" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=r" title=""><div><img src="img/BusIcon.png" alt="BusIcon"></div></a></div>', //Inhalt den man selber wählen kann je nach belieben
-					borderRadius: 0,																															//Das InfoBubble soll keine Abgerundeten
-					padding: 0,																																		//Es soll ebenfalls kein Padding am Rand des InfoBubbles erscheinen
-					arrowSize: 10,																																//Pfeilgröße am unteren Rand
-					borderWidth: 0,																																//Rahmenbreite ist auf 0 gesetzt da hier kein Rahmen gewünscht ist
-					borderColor: '#2c2c2c',																												//Rahmenfarbe aber da hier kein Rahmen zu sehen ist, ist es uninteressant welche Farbe man angibt
-					disableAutoPan: false,																												//Wenn das InfoBubble nicht beim Klick komplett sichtbar ist wird es so verschoben das es komplett sichtbar wird
-					hideCloseButton: true,																												//Den Standart Schließen Knopf ausblenden
-					arrowPosition: 0,																															//Der Pfeil zum Marker soll ganz links vom InfoBubble beginnen
-					maxWidth: 275,																																//Breite des InfoBubbles
-					shadowStyle: 0,																																//Der Schattenstyle des Info Bubbles möglich sind Werte 0, 1 und 2
-					maxHeight: 111,																																//Höhe des InfoBubble
-					arrowStyle: 2																																	//Die Neigung des Pfeils hier folgende Werte möglich 0, 1 und 2
-				});
+			content: '<div class="mapInfoBox">' + Titel + '<br/><span>' + Anschrift + '<br/>' + Postleitzahl + ' ' + Ort + '</span></div><div class="mapInfoBoxSideBar"><a id="Fahrrad" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=b" title=""><div><img src="img/FahrradIcon.png" alt="FahrradIcon"></div></a><a id="Auto" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=d" title=""><div><img src="img/AutoIcon.png" alt="AutoIcon"></div></a><a id="Bus" href="http://maps.google.com/maps?saddr=&daddr=' + Koordinaten.split(',')[0] + ',' + Koordinaten.split(',')[1] + '&dirflg=r" title=""><div><img src="img/BusIcon.png" alt="BusIcon"></div></a></div>', //Inhalt den man selber wählen kann je nach belieben
+			borderRadius: 0,																															//Das InfoBubble soll keine Abgerundeten
+			padding: 0,																																		//Es soll ebenfalls kein Padding am Rand des InfoBubbles erscheinen
+			arrowSize: 10,																																//Pfeilgröße am unteren Rand
+			borderWidth: 0,																																//Rahmenbreite ist auf 0 gesetzt da hier kein Rahmen gewünscht ist
+			borderColor: '#2c2c2c',																												//Rahmenfarbe aber da hier kein Rahmen zu sehen ist, ist es uninteressant welche Farbe man angibt
+			disableAutoPan: false,																												//Wenn das InfoBubble nicht beim Klick komplett sichtbar ist wird es so verschoben das es komplett sichtbar wird
+			hideCloseButton: true,																												//Den Standart Schließen Knopf ausblenden
+			arrowPosition: 0,																															//Der Pfeil zum Marker soll ganz links vom InfoBubble beginnen
+			maxWidth: 275,																																//Breite des InfoBubbles
+			shadowStyle: 0,																																//Der Schattenstyle des Info Bubbles möglich sind Werte 0, 1 und 2
+			maxHeight: 111,																																//Höhe des InfoBubble
+			arrowStyle: 2																																	//Die Neigung des Pfeils hier folgende Werte möglich 0, 1 und 2
+		});
 		
 		infoBubble.open(map, marker);
 		
@@ -101,21 +101,21 @@ function initialize() {
 			marker.set('id', y);
 			
 			//Alle InfoBubbles erstellen 
-			infoBubbleArray[y] = new InfoBubble({																								//Existiert noch kein InfoBubble dann erstelle ein neues
+			infoBubbleArray[y] = new InfoBubble({	//Existiert noch kein InfoBubble dann erstelle ein neues
 				content: '<div class="mapInfoBox">' + TitelArray[y] + '<br/><span>' + AnschriftArray[y] + '<br/>' + PostleitzahlArray[y] + ' ' + OrtArray[y] + '</span><a class="blockLink" href="' + PfadArray[y] + '" title="' + PfadArray[y] + '">Weitere Informationen</a></div>', //Inhalt den man selber wählen kann je nach belieben
-				 borderRadius: 0,																															//Das InfoBubble soll keine Abgerundeten
-				 padding: 0,																																		//Es soll ebenfalls kein Padding am Rand des InfoBubbles erscheinen
-				 arrowSize: 10,																																//Pfeilgröße am unteren Rand
-				 borderWidth: 0,																																//Rahmenbreite ist auf 0 gesetzt da hier kein Rahmen gewünscht ist
-				 borderColor: '#2c2c2c',																												//Rahmenfarbe aber da hier kein Rahmen zu sehen ist, ist es uninteressant welche Farbe man angibt
-				 disableAutoPan: false,																												//Wenn das InfoBubble nicht beim Klick komplett sichtbar ist wird es so verschoben das es komplett sichtbar wird
-				 hideCloseButton: true,																												//Den Standart Schließen Knopf ausblenden
-				 arrowPosition: 0,																															//Der Pfeil zum Marker soll ganz links vom InfoBubble beginnen
-				 maxWidth: 275,																																//Breite des InfoBubbles
-				 shadowStyle: 0,																																//Der Schattenstyle des Info Bubbles möglich sind Werte 0, 1 und 2
-				 maxHeight: 111,																																//Höhe des InfoBubble
-				 arrowStyle: 2																																	//Die Neigung des Pfeils hier folgende Werte möglich 0, 1 und 2
-				});
+				 borderRadius: 0, 		//Das InfoBubble soll keine Abgerundeten
+				 padding: 0,			//Es soll ebenfalls kein Padding am Rand des InfoBubbles erscheinen
+				 arrowSize: 10,			//Pfeilgröße am unteren Rand
+				 borderWidth: 0,		//Rahmenbreite ist auf 0 gesetzt da hier kein Rahmen gewünscht ist
+				 borderColor: '#2c2c2c',	//Rahmenfarbe aber da hier kein Rahmen zu sehen ist, ist es uninteressant welche Farbe man angibt
+				 disableAutoPan: false,		//Wenn das InfoBubble nicht beim Klick komplett sichtbar ist wird es so verschoben das es komplett sichtbar wird
+				 hideCloseButton: true,		//Den Standart Schließen Knopf ausblenden
+				 arrowPosition: 0,		//Der Pfeil zum Marker soll ganz links vom InfoBubble beginnen
+				 maxWidth: 275,			//Breite des InfoBubbles
+				 shadowStyle: 0,		//Der Schattenstyle des Info Bubbles möglich sind Werte 0, 1 und 2
+				 maxHeight: 111,		//Höhe des InfoBubble
+				 arrowStyle: 2			//Die Neigung des Pfeils hier folgende Werte möglich 0, 1 und 2
+			});
 			
 			//Wird auf einen Marker geklickt
 			google.maps.event.addListener(marker, 'click', function () {
