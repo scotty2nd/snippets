@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+	    <title>Achilles</title>
+	  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  	<link rel="stylesheet" type="text/css" href="style.css">
+	    <link rel="shortcut icon" href="/favicon.ico">
+	    <script type="text/javascript" src="jquery.js"></script>    
+	  	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBtKIMom2UUI26hkYLt73c6D7USViNrSKM&sensor=False"></script>
+		<script type="text/javascript" src="Infobubble.js"></script>
+		<script type="text/javascript" src="GoogleMaps.js"></script>
+	</head>
+
+	<body>
+
+	<script>
+		$(document).ready(function(){
+			initialize(); //GoogleMaps Javascript Funktion aufrufen
+		});
+	</script>
+	<div id="map_canvas" data-koordinaten="53.52055703,8.115551559" data-titel="Achilles" data-anschrift="Börsenstraße 25" data-postleitzahl="26382" data-ort="Wilhelmshaven" data-marker_img="img/marker.png" style="width:100%; height:400px; margin-bottom:25px;"></div>	
+	</body>
+
+</html>

@@ -1,0 +1,84 @@
+Sub exportHTML()
+    Dim fs As Object
+    Dim i As Integer
+   
+    anzahlSpalten = Sheets(1).Cells(1, 256).End(xlToLeft).Column
+   
+    For i = 1 To anzahlSpalten
+     
+        Set fs = CreateObject("Scripting.FileSystemObject")
+        'Set fs = CreateObject("ADODB.Stream")
+        'fs.Charset = "utf-8"
+        'Set f = fs.opentextfile("ReminderInterimShop_" & Cells(1, i) & ".html", 2, True)
+        Set f = fs.CreateTextFile("ReminderInterimShop_" & Cells(1, i) & ".html", True, True)
+       
+        f.writeline "<!DOCTYPE html>"
+       
+        f.writeline "<html>"
+       
+        f.writeline "<head>"
+       
+        f.writeline "<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" /> <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/> <title>" & Cells(2, i) & "</title> <style type=""text/css""> body { width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; background-color: #e9e9e9; } img { display: block; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; } a img { border: none; } p { font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; margin: 0; } h1, h2, h3, h4, h5, h6 { margin: 0; margin-bottom: 3px; font-size: 13px; font-family: Arial, sans-serif; } table td { border-collapse: collapse; } table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; } a { color: #00b1eb; font-size: 12px; font-family: Arial, sans-serif; text-decoration: none; } </style>"
+   
+        f.writeline "</head>"
+       
+        f.writeline "<body>"
+       
+        f.writeline "<style>a, span {font-weight: bold;}</style>"
+       
+        f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; margin:0 auto; padding:0; padding-top: 20px;""> <img src=""banner.jpg"" /> </td> </tr> </table>"
+       
+        f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;"">"
+       
+        f.writeline "<tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <h1>" & Cells(3, i) & "</h1><br> <p> " & Cells(4, i) & "<br><br> " & Cells(5, i) & "</p> </td> </tr> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <p>" & Cells(6, i) & "</p> <hr style=""color: #999; border: 0; border-bottom-width: 1px; border-bottom-style: solid; padding-top: 10px;""> </td> </tr>"
+ 
+        f.writeline "</table>"
+       
+        f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding: 20px;""> <h2>Volkswagen AG</h2> <p> Berliner Ring 2<br> 38440 Wolfsburg<br> Germany<br> " & Cells(7, i) & " <br> " & Cells(8, i) & " </p> </td> </tr> </table>"
+       
+        If Cells(9, i) <> "" Then
+       
+            'f.writeline "<table style=""width:602px; margin:0 auto; padding:0; background-color: #fff;"" align=""center"" border=""0"" cellpadding=""0"" cellspacing=""0""><tbody><tr><td style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;"" valign=""top"" width=""602px""><hr style=""color: #999; border: 0; border-bottom-width: 1px; border-bottom-style: solid; padding-top: 10px;""></td></tr></tbody></table>"
+           
+            'f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; margin:0 auto; padding:0; padding-top: 20px;""> <img src=""banner.jpg"" /> </td> </tr> </table>"
+       
+            f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;"">"
+       
+            f.writeline "<tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <h1>" & Cells(10, i) & "</h1><br> <p> " & Cells(11, i) & "<br><br> " & Cells(12, i) & "</p> </td> </tr> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <p>" & Cells(13, i) & "</p> <hr style=""color: #999; border: 0; border-bottom-width: 1px; border-bottom-style: solid; padding-top: 10px;""> </td> </tr>"
+ 
+            f.writeline "</table>"
+           
+            If Cells(16, i) <> "" Then
+               f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding: 20px;""> <h2>Volkswagen AG</h2> <p> Berliner Ring 2<br> 38440 Wolfsburg<br> Germany<br> " & Cells(14, i) & " <br> " & Cells(15, i) & " </p> </td> </tr> </table>"
+            Else
+               f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff; margin-bottom:20px;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding: 20px;""> <h2>Volkswagen AG</h2> <p> Berliner Ring 2<br> 38440 Wolfsburg<br> Germany<br> " & Cells(14, i) & " <br> " & Cells(15, i) & " </p> </td> </tr> </table>"
+            End If
+           
+        End If
+       
+        If Cells(16, i) <> "" Then
+       
+            'f.writeline "<table style=""width:602px; margin:0 auto; padding:0; background-color: #fff;"" align=""center"" border=""0"" cellpadding=""0"" cellspacing=""0""><tbody><tr><td style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;"" valign=""top"" width=""602px""><hr style=""color: #999; border: 0; border-bottom-width: 1px; border-bottom-style: solid; padding-top: 10px;""></td></tr></tbody></table>"
+           
+            'f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; margin:0 auto; padding:0; padding-top: 20px;""> <img src=""banner.jpg"" /> </td> </tr> </table>"
+       
+            f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;"">"
+       
+            f.writeline "<tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <h1>" & Cells(17, i) & "</h1><br> <p> " & Cells(18, i) & "<br><br> " & Cells(19, i) & "</p> </td> </tr> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding-top: 20px; padding-left: 20px; padding-right: 20px;""> <p>" & Cells(20, i) & "</p> <hr style=""color: #999; border: 0; border-bottom-width: 1px; border-bottom-style: solid; padding-top: 10px;""> </td> </tr>"
+ 
+            f.writeline "</table>"
+           
+            f.writeline "<table cellpadding=""0"" cellspacing=""0"" border=""0"" align=""center"" style=""width:602px; margin:0 auto; padding:0; background-color: #fff;margin-bottom:20px;""> <tr> <td width=""602px"" valign=""top"" style=""width: 602px; padding: 20px;""> <h2>Volkswagen AG</h2> <p> Berliner Ring 2<br> 38440 Wolfsburg<br> Germany<br> " & Cells(21, i) & " <br> " & Cells(22, i) & " </p> </td> </tr> </table>"
+       
+        End If
+       
+        f.writeline "</body>"
+       
+        f.writeline "</html>"
+       
+        f.Close
+     
+    Next i
+   
+    MsgBox ("Fertig! " & anzahlSpalten & " Spalten durchlaufen")
+End Sub
