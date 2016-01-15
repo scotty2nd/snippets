@@ -1,0 +1,23 @@
+/*Das Element das später gezeigt warden sol list anfangs mit opacity 0 ausgelendet*/
+.kontakt_content_overlay {
+    background-color: rgba(190, 0, 30, 0.85);
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 380px;
+    width: 290px;
+
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+ 
+ 
+/*Gibt an über welches Element gehovert werden soll und welches Element eingeblendet werden soll*/
+.ansprechpartner_small:hover > .kontakt_content_overlay {
+    opacity: 1;
+}
