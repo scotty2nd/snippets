@@ -1,0 +1,43 @@
+/*CSS Keyframe um direct nach dem Laden der seite ohne Javascript den folgende Container smooth von der seite reinfahren lassen*/
+.social-mediabar-container {
+    position: fixed;
+    background-color: transparent;
+    left: -50px;
+    top: 50%;
+    z-index: 22;
+    height: 300px;
+    margin-top: -150px;
+    width: 50px;
+    webkit-animation: slidein 1s linear both;
+    -moz-animation: slidein 1s linear both;
+    -ms-animation: slidein 1s linear both;
+    -o-animation: slidein 1s linear both;
+    animation: slidein 1s linear both;
+ 
+    /*Extra nur für Safari benötigt*/
+    -webkit-animation-name: slidein;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+}
+
+/*Extra nur für Safari benötigt*/
+@-webkit-keyframes slidein {
+    from {
+        left: -55px;
+    }
+
+    to {
+        left: 0px;
+    }
+}
+
+@keyframes slidein {
+    from {
+        left: -55px;
+    }
+
+    to {
+        left: 0px;
+    }
+}
