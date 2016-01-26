@@ -1,0 +1,13 @@
+/*Kompletter Seiteninhalt wird im Sticky Popup angezeigt dieser Fehler tritt manchmal mit Pagebuildern auf*/
+/*Um dies zu verhindern muss in der class-sticky-popup.php Datei folgender Code verändert werden*/
+
+ALTER CODE:
+$this->popup_content = apply_filters('the_content', $this->popup_content );
+
+$this->popup_content = str_replace( ']]>', ']]&gt;', $this->popup_content );
+
+
+NEUER CODE:			
+$this->popup_content = do_shortcode($this->popup_content);
+
+/*Dieser ermöglich das einfügen von Shortcuts wie zum Beispiel ein Formular von Contact Form 7*/

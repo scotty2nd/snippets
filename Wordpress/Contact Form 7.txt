@@ -1,0 +1,27 @@
+/*Um die Erfolgs/Fehlerhinweise über dem Formular anzuzeigen statt unter dem Formular (Standart)*/
+/*Folgenden Shortcode an den Anfang oder an das Ende des Formulars setzten*/
+
+[response]
+
+<p>Name (Pflichtfeld)<br />
+    [text* your-name] </p>
+
+<p>Vorname<br />
+    [text your-first-name] </p>
+
+<p>Business<br />
+    [text your-business] </p>
+
+<p>Position<br />
+    [text your-position] </p>
+
+<p>Ihre E-Mail-Adresse (Pflichtfeld)<br />
+    [email* your-email] </p>
+
+<p>Telefon<br />
+    [tel your-position] </p>
+
+<ebd />
+
+<p>[submit "Daten Senden & Downloaden"]</p>
+

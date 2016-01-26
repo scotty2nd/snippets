@@ -3,3 +3,16 @@ $ git clone https://github.com/scotty2nd/snippets.git
 
 /*Neusten Datenstand downloaden*/
 $ git pull origin master
+
+/*Neu Datein Hinzufügen*/
+$ git add "Git Consolen Commands.txt"
+
+/*Neuen Commit mit Beschreibung erstellen*/
+$ git commit -m "git consolen commands erstellt"
+
+/*Änderungen pushen*/
+$ git push origin master
+
+Zur Authentifizierung Github Benutzernamen und Passwort eingeben
+
+
