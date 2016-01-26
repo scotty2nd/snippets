@@ -1,0 +1,5 @@
+/*Repository aus z.b. aus GitHub downloaden*/
+$ git clone https://github.com/scotty2nd/snippets.git 
+
+/*Neusten Datenstand downloaden*/
+$ git pull origin master
