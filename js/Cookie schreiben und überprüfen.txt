@@ -1,0 +1,14 @@
+/*On Document Ready überprüfe ob das Cookie ("cookieBannerClosed") existiert*/
+/*Imzweiten Teil wird das Cookie beim Clickevent gesetzt*/
+
+(function() {
+    if (document.cookie.indexOf("cookieBannerClosed") >= 0) {
+        jQuery("#cookie-banner").css('display','none');
+    }
+
+    jQuery("#cookie-banner > #content > .buttonWrapper > a").click(function(){
+        jQuery("#cookie-banner").addClass('slideout');
+        document.cookie="cookieBannerClosed=True";
+        return false;
+    });
+})();
