@@ -1,0 +1,22 @@
+/*Wenn mit Xampp verwendet wird dann erst in C:\xampp\mysql\bin wechseln*/
+
+mysql -u root 
+mysql -u root -pPASSWORT
+
+Welcome to ... erscheint
+
+CREATE Database rms;
+
+USE Database rms;
+//Wichtig ist das Semikolon am Ende um den Befehl abzuschliessen
+
+
+\q abmelden aus der MySQl Sitzung
+
+/*Importieren via Console*/
+mysql -u root DATENBANKNAME < PFAD ZUR SQL DATEI
+mysql -u root -pPASSWORT DATENBANKNAME < PFAD ZUR SQL DATEI
+
+/*Exportieren via Console*/
+mysql -u root DATENBANKNAME > PFAD ZUR SQL DATEI
+mysql -u root -pPASSWORT DATENBANKNAME > PFAD ZUR SQL DATEI
