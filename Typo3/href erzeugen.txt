@@ -1,0 +1,2 @@
+/*Kleine Info funktioniert nicht im Javascript*/
+<f:link.page pageUid="134">Linkname für die Seite 134</f:link.page>
