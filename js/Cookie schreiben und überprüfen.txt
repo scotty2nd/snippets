@@ -1,9 +1,13 @@
-/*On Document Ready überprüfe ob das Cookie ("cookieBannerClosed") existiert*/
+/*On Document Ready Ã¼berprÃ¼fe ob das Cookie ("cookieBannerClosed") existiert*/
 /*Imzweiten Teil wird das Cookie beim Clickevent gesetzt*/
 
 (function() {
     if (document.cookie.indexOf("cookieBannerClosed") >= 0) {
         jQuery("#cookie-banner").css('display','none');
+        /*User ist zurÃ¼ck gekehrt*/
+    }else{
+        document.cookie="cookieBannerClosed=True";
+        /*User ist das erste mal hier*/
     }
 
     jQuery("#cookie-banner > #content > .buttonWrapper > a").click(function(){
