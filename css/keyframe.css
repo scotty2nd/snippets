@@ -1,4 +1,7 @@
-/*CSS Keyframe um direct nach dem Laden der seite ohne Javascript den folgende Container smooth von der seite reinfahren lassen*/
+/*CSS Keyframe um direct nach dem Laden der Seite ohne Javascript den folgenden Container(social-mediabar)*/
+/*smooth von der linken Seite reinfahren zu lassen*/
+/*Beispiel RMS Social Media Bar*/
+
 .social-mediabar-container {
     position: fixed;
     background-color: transparent;
@@ -8,7 +11,7 @@
     height: 300px;
     margin-top: -150px;
     width: 50px;
-    webkit-animation: slidein 1s linear both;
+    -webkit-animation: slidein 1s linear both; /*Both ist damit der Animationsende erhalten bleibt*/
     -moz-animation: slidein 1s linear both;
     -ms-animation: slidein 1s linear both;
     -o-animation: slidein 1s linear both;
