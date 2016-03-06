@@ -1,0 +1,8 @@
+//Wolverine Theme Produkt Detail Seite Pfad
+\wp-content\plugins\wolverine-framework\includes\shortcodes\portfolio\templates\single
+
+//Wolverine Theme Startseite Produkt Grid
+/public_html/wp-content/plugins/wolverine-framework/includes/shortcodes/portfolio/templates/listing-onepage.php
+
+ //Wolverine Theme Startseite Produkt Grid Kacheln
+/public_html/wp-content/plugins/wolverine-framework/includes/shortcodes/portfolio/templates/loop/one-page-item.php
