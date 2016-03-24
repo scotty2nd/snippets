@@ -1,0 +1,5 @@
+Um die Wordpress Admin Bar im Frontend auszublenden wenn man eingelogt
+Folgendes Menü aufrufen:
+-> Benutzer
+	-> Dein Profil
+		-> Werkzeugleiste für mich auf der Website anzeigen Checkbox abhacken

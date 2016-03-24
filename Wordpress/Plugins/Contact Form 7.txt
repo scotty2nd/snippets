@@ -1,5 +1,5 @@
-/*Um die Erfolgs/Fehlerhinweise über dem Formular anzuzeigen statt unter dem Formular (Standart)*/
-/*Folgenden Shortcode an den Anfang oder an das Ende des Formulars setzten*/
+Um die Erfolgs/Fehlerhinweise über dem Formular anzuzeigen statt unter dem Formular (Standart)
+Folgenden Shortcode an den Anfang oder an das Ende des Formulars setzten
 
 [response]
 

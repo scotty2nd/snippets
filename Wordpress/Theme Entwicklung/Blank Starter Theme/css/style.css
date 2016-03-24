@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'AvenirNextRegular';
+    src: url('../fonts/AvenirNextLTPro-Regular.eot') format('eot');
+    src: url('../fonts/AvenirNextLTPro-Regular.eot?#iefix') format('embedded-opentype'),  url('../fonts/AvenirNextLTPro-Regular.otf')  format('opentype'), url('../fonts/AvenirNextLTPro-Regular.woff') format('woff'), url('../fonts/AvenirNextLTPro-Regular.ttf')  format('truetype'), url('../fonts/AvenirNextLTPro-Regular.svg#AvenirNextLTPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextDemi';
+    src: url('../fonts/AvenirNextLTPro-Demi.eot') format('eot');
+    src: url('../fonts/AvenirNextLTPro-Demi.eot?#iefix') format('embedded-opentype'),  url('../fonts/AvenirNextLTPro-Demi.otf')  format('opentype'), url('../fonts/AvenirNextLTPro-Demi.woff') format('woff'), url('../fonts/AvenirNextLTPro-Demi.ttf')  format('truetype'), url('../fonts/AvenirNextLTPro-Demi.svg#AvenirNextLTPro-Demi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextItalic';
+    src: url('../fonts/AvenirNextLTPro-It.eot') format('eot');
+    src: url('../fonts/AvenirNextLTPro-It.eot?#iefix') format('embedded-opentype'),  url('../fonts/AvenirNextLTPro-It.otf')  format('opentype'), url('../fonts/AvenirNextLTPro-It.woff') format('woff'), url('../fonts/AvenirNextLTPro-It.ttf')  format('truetype'), url('../fonts/AvenirNextLTPro-Bold.svg#AvenirNextLTPro-It') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextBold';
+    src: url('../fonts/AvenirNextLTPro-Bold.eot') format('eot');
+    src: url('../fonts/AvenirNextLTPro-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-Bold.woff') format('woff'), url('../fonts/AvenirNextLTPro-Bold.ttf')  format('truetype'), url('../fonts/AvenirNextLTPro-Bold.svg#AvenirNextLTPro-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+

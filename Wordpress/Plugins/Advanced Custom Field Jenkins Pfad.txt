@@ -1,0 +1,4 @@
+Wenn Advanced Custom Fields in Verbindung Jenkins Magelanes verwendet wird und die Plugins 
+im Shared Ordner liegen muss der Server Pfad manuell in der acf.php angepasst werden.
+Es muss im Pfad alles vor dem Shared Ordner ersetzt werden. Auch der Shared Ordner darf nicht
+mehr im Pfad enthalten sein. Bsp. noch einfügen.
