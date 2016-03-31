@@ -11,3 +11,17 @@
         background-color: lightgreen;
     }
 }
+
+/*Nur zwischen 600px und 800px*/
+@media screen (min-width: 600px) and (max-width: 800px) {
+  	body {
+        background-color: lightgreen;
+    }
+}
+
+/*Quety Speziell für Print*/
+@media print {
+  	body {
+        background-color: lightgreen;
+    }
+}

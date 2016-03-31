@@ -21,6 +21,11 @@ Folgenden Shortcode an den Anfang oder an das Ende des Formulars setzten
 <p>Telefon<br />
     [tel your-position] </p>
 
+<p>Auswahl<br />
+    [select* your-choice include_blank "Erster Eintrag" "Zweiter Eintrag" "Dritter Eintrag"] </p>
+
+Wenn die Select Box ein Pflichtfeld sein soll dann muss ein * un include_blank hinzugefügt werden 
+
 <ebd />
 
 <p>[submit "Daten Senden & Downloaden"]</p>
