@@ -1,9 +1,0 @@
-div {
-    /*Erste Wert nach Rechts, Zweiter Wert nach Unten*/
-    -ms-transform: translate(50px,100px); /* IE 9 */
-    -webkit-transform: translate(50px,100px); /* Safari, Chrome */
-    transform: translate(50px,100px);
-
-    /*Beim IE 9 hatte ich ein Problem mit translateY(-50%) dort wurde die Eigenschaft überhaupt nicht angezeigt*/
-    /*Abhilfe war das anders zu notieren anstatt translateY einfach translate(0px, -50%) verwenden*/
-} 

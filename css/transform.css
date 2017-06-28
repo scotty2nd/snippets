@@ -1,0 +1,39 @@
+div {
+    /*Erste Wert nach Rechts, Zweiter Wert nach Unten*/
+    -webkit-transform: translate(50px,100px);
+    -moz-transform: translate(50px,100px);
+    -ms-transform: translate(50px,100px);
+    -o-transform: translate(50px,100px);
+    transform: translate(50px,100px);
+
+    /*Beim IE 9 hatte ich ein Problem mit translateY(-50%) dort wurde die Eigenschaft überhaupt nicht angezeigt*/
+    /*Abhilfe war das anders zu notieren anstatt translateY einfach translate(0px, -50%) verwenden*/
+
+    /*Container nach Oben oder Unten verschieben*/
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+    transform: translateY(50%);
+
+    /*Container nach Rechts oder Links verschieben*/
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+
+    /*Container um 90° drehen*/
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+
+    /*Container nach Oben oder Unten verschieben und zusätzlich drehen*/
+	-webkit-transform: rotate(90deg) translateY(-100%);
+	-moz-transform: rotate(90deg) translateY(-100%);
+	-ms-transform: rotate(90deg) translateY(-100%);
+	-o-transform: rotate(90deg) translateY(-100%);
+	transform: rotate(90deg) translateY(-100%);
+} 
