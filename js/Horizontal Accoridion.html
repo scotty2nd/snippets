@@ -1,312 +1,325 @@
 <!-- Horizontales Accordion das in der Smartphone Ansicht ausgeblendet wird und stattdessen ein normaler Slick Slider gezeigt wird. Benötigt wird jQuery, slick.js und slick.min.css. Eine Demo ist auf Codepen hier zu sehen https://codepen.io/anon/pen/YQQoyX -->
 
-<style>
-*{
-  box-sizing: border-box;
-}
-section{
-  position: relative;
-  max-width: 1260px;
-  margin: 0 auto;
-  padding: 30px;
-}
-.left{
-  display:inline-block;
-  width: 40%;
-  vertical-align:top;
-}
-.right{
-  display: inline-block;
-  width: 60%;
-  vertical-align:top;
-}
-.h-accordion {
-  position: relative;
-  background-color: #fff;
-  display:flex;
-  height:380px;
-}
-.item-wrapper{
-  width: 50px;
-  float: left;
-  background-color: #211D67;
-  border-right: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  -webkit-transition: all .4s ease;
-  -moz-transition: all .4s ease;
-  -ms-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  transition: all .4s ease;
-}
-.item-wrapper.active{
-  width:0px;
-  padding:0px;
-  border: none;
-  overflow:hidden;
-}
-.item-wrapper:hover{
-  background-color: #1c1857;
-}
-.item{
-  height: 100%;
-  width:50px;
-  color:white;
-  float:left;
-  position:relative;
-}
-.info{
-  height: 100%;
-  background-color: gray;
-  float: left;
-  display:none;
-  overflow: hidden;
-}
-.bg-image{
-  background-image: url('http://iauftrag.safe-ws.de/Desktop.jpg');
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-}
-.bg-image.first{
-  background-image: url('http://kellei.info/images2/coupe-cheveux-longs/coupe-cheveux-longs-63_7.jpg');
-}
-.bg-image.second{
-  background-image: url('https://image.gala.de/20521240/large1x1-460-460/d08b9322cc54c949f24001751c7f2208/lX/keira-knigthley--6294266-.jpg');
-}
-.bg-image.third{
-    background-image: url('https://images4.cosmopolitan.ru/upload/img_cache/b1d/b1dcc9dc569bbe1708d566bf92b5a050_cropped_460x460.jpg');
-}
-.bg-image.third{
-  background-image: url('http://s2.r29static.com//bin/entry/7f2/0,46,460,460/x/1184977/image.gif'); 
-}
-.clear {
-  clear: both;
-  height: 0;
-}
-.vertical-text {
-  -webkit-transform: rotate(90deg) translateY(-100%);
-  -moz-transform: rotate(90deg) translateY(-100%);
-  -ms-transform: rotate(90deg) translateY(-100%);
-  -o-transform: rotate(90deg) translateY(-100%);
-  transform: rotate(90deg) translateY(-100%);
-  transform-origin: left top 0;
-  display: block;
-  padding-left: 20px;
-  white-space: nowrap;
-  line-height: 50px;
-  -webkit-transition: all .4s ease;
-  -moz-transition: all .4s ease;
-  -ms-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  transition: all .4s ease;
-}
-.triangle{
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 10.5px 0 10.5px 13px;
-  border-color: transparent transparent transparent #ffffff;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: all .4s ease;
-  -moz-transition: all .4s ease;
-  -ms-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  transition: all .4s ease;
-}
-.item-wrapper.active ~ .item-wrapper .triangle {
-  -webkit-transform: rotate(-180deg) translateX(50%);
-  -moz-transform: rotate(-180deg) translateX(50%);
-  -ms-transform: rotate(-180deg) translateX(50%);
-  -o-transform: rotate(-180deg) translateX(50%);
-  transform: rotate(-180deg) translateX(50%);
-}
-.h-accordion-mobile{
-  display:none;
-  position:relative;
-}
-.slick-dots{
-  position: absolute;
-  bottom: 10px;
-  text-align: center;
-  width: 100%;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-.slick-dots li{
-  width:16px;
-  height:16px;  
-  position:relative;
-  display: inline-block;
-  margin: 0 3px;
-  padding: 0;
-  cursor: pointer;
-  border: 2px solid #fff;
-  border-radius: 50%;
-}
-.slick-dots li:after {
-  height: 12px;
-  width: 12px;
-  background-color: #211d67;
-  cursor: pointer;
-  display: block;
-  z-index: 9;
-  margin: 0;
-  content: "";
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-}
-.slick-dots li.slick-active:after,
-.slick-dots li:hover:after{
-  content: '';
-  background-color:#E5243C;
-}
-@media only screen and (max-width: 1023px) {
-  .bg-image{
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Horizontales Accordion</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+</head>
+
+<body>
+  <style>
+  *{
+    box-sizing: border-box;
+  }
+  section{
+    position: relative;
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 30px;
   }
   .left{
-    width: 100%;
+    display:inline-block;
+    width: 40%;
+    vertical-align:top;
   }
   .right{
-    width: 100%;
+    display: inline-block;
+    width: 60%;
+    vertical-align:top;
   }
-}
-@media only screen and (max-width: 767px) {
-  .h-accordion-mobile{
-    display: block;
+  .h-accordion {
+    position: relative;
+    background-color: #fff;
+    display:flex;
+    height:380px;
   }
-  .h-accordion{
+  .item-wrapper{
+    width: 50px;
+    float: left;
+    background-color: #211D67;
+    border-right: 2px solid #fff;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .item-wrapper.active{
+    width:0px;
+    padding:0px;
+    border: none;
+    overflow:hidden;
+  }
+  .item-wrapper:hover{
+    background-color: #1c1857;
+  }
+  .item{
+    height: 100%;
+    width:50px;
+    color:white;
+    float:left;
+    position:relative;
+  }
+  .info{
+    height: 100%;
+    background-color: gray;
+    float: left;
     display:none;
+    overflow: hidden;
   }
-}
-</style>
+  .bg-image{
+    background-image: url('http://iauftrag.safe-ws.de/Desktop.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+  }
+  .bg-image.first{
+    background-image: url('http://kellei.info/images2/coupe-cheveux-longs/coupe-cheveux-longs-63_7.jpg');
+  }
+  .bg-image.second{
+    background-image: url('https://image.gala.de/20521240/large1x1-460-460/d08b9322cc54c949f24001751c7f2208/lX/keira-knigthley--6294266-.jpg');
+  }
+  .bg-image.third{
+      background-image: url('https://images4.cosmopolitan.ru/upload/img_cache/b1d/b1dcc9dc569bbe1708d566bf92b5a050_cropped_460x460.jpg');
+  }
+  .bg-image.third{
+    background-image: url('http://s2.r29static.com//bin/entry/7f2/0,46,460,460/x/1184977/image.gif'); 
+  }
+  .clear {
+    clear: both;
+    height: 0;
+  }
+  .vertical-text {
+    -webkit-transform: rotate(90deg) translateY(-100%);
+    -moz-transform: rotate(90deg) translateY(-100%);
+    -ms-transform: rotate(90deg) translateY(-100%);
+    -o-transform: rotate(90deg) translateY(-100%);
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: left top 0;
+    display: block;
+    padding-left: 20px;
+    white-space: nowrap;
+    line-height: 50px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .triangle{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10.5px 0 10.5px 13px;
+    border-color: transparent transparent transparent #ffffff;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .item-wrapper.active ~ .item-wrapper .triangle {
+    -webkit-transform: rotate(-180deg) translateX(50%);
+    -moz-transform: rotate(-180deg) translateX(50%);
+    -ms-transform: rotate(-180deg) translateX(50%);
+    -o-transform: rotate(-180deg) translateX(50%);
+    transform: rotate(-180deg) translateX(50%);
+  }
+  .h-accordion-mobile{
+    display:none;
+    position:relative;
+  }
+  .slick-dots{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .slick-dots li{
+    width:16px;
+    height:16px;  
+    position:relative;
+    display: inline-block;
+    margin: 0 3px;
+    padding: 0;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  .slick-dots li:after {
+    height: 12px;
+    width: 12px;
+    background-color: #211d67;
+    cursor: pointer;
+    display: block;
+    z-index: 9;
+    margin: 0;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .slick-dots li button {
+      font-size: 0;
+      line-height: 0;
+      display: block;
+      width: 20px;
+      height: 20px;
+      padding: 5px;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+      background: transparent;
+  }
+  .slick-dots li.slick-active:after,
+  .slick-dots li:hover:after{
+    content: '';
+    background-color:#E5243C;
+  }
+  @media only screen and (max-width: 1023px) {
+    .bg-image{
+    }
+    .left{
+      width: 100%;
+    }
+    .right{
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .h-accordion-mobile{
+      display: block;
+    }
+    .h-accordion{
+      display:none;
+    }
+  }
+  </style>
 
-<section>
-  <div class="left">
-     Lorem Ipsum
-  </div><!--
-    --><div class="right">
-    <div class="h-accordion-mobile">
-      <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
-      <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
-      <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
+  <section>
+    <div class="left">
+       Lorem Ipsum
+    </div><!--
+      --><div class="right">
+      <div class="h-accordion-mobile">
+        <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
+        <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
+        <img src="http://iauftrag.safe-ws.de/Desktop.jpg"/>
+      </div>
+
+      <div class="h-accordion">
+        <div class="item-wrapper active">
+          <div class="item">
+            <span class="vertical-text">Ausbau / Bestandteile</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="bg-image"></div>
+        </div>
+
+        <div class="item-wrapper">
+          <div class="item">
+            <span class="vertical-text">Modelle</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="bg-image first"></div>
+        </div>
+
+        <div class="item-wrapper">
+          <div class="item">
+            <span class="vertical-text">Item Bild2</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="bg-image second"></div>
+        </div>
+
+        <div class="item-wrapper">
+          <div class="item">
+            <span class="vertical-text">Item Bild3</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="bg-image third">
+          </div>
+        </div>
+
+        <div class="item-wrapper">
+          <div class="item">
+            <span class="vertical-text">Item Bild4</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="bg-image fourth"></div>
+        </div>
+
+        <div class="clear">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="h-accordion">
-      <div class="item-wrapper active">
-        <div class="item">
-          <span class="vertical-text">Ausbau / Bestandteile</span>
-          <div class="triangle"></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="bg-image"></div>
-      </div>
+  <script>
+    $(function () {
+      "use strict";
 
-      <div class="item-wrapper">
-        <div class="item">
-          <span class="vertical-text">Modelle</span>
-          <div class="triangle"></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="bg-image first"></div>
-      </div>
-
-      <div class="item-wrapper">
-        <div class="item">
-          <span class="vertical-text">Item Bild2</span>
-          <div class="triangle"></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="bg-image second"></div>
-      </div>
-
-      <div class="item-wrapper">
-        <div class="item">
-          <span class="vertical-text">Item Bild3</span>
-          <div class="triangle"></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="bg-image third">
-        </div>
-      </div>
-
-      <div class="item-wrapper">
-        <div class="item">
-          <span class="vertical-text">Item Bild4</span>
-          <div class="triangle"></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="bg-image fourth"></div>
-      </div>
-
-      <div class="clear">
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-$(function () {
-  "use strict";
-
-  var containerWidth = $(".h-accordion").width(),
-      slideCount = $(".item").length,
-      itemWidth = 50,
-      calcContentWidth = containerWidth - (itemWidth * (slideCount - 1)),
-      calcAccordionHeigth = (480 / 700) * calcContentWidth;
-  
-  /*(original height / original width) x new width = new height*/
-  $(".h-accordion").css('height', calcAccordionHeigth);
-  $(".info").first().show().animate({width: calcContentWidth + "px"});
-  
-  $(".item-wrapper").on("click", function () {
-    $(".item-wrapper").removeClass("active");
-    $(this).addClass("active");
-    
-    $(this).next().show()
-      .animate({width: calcContentWidth + "px"},function(){})
-      .siblings(".info")
-      .animate({width: "0px"},function(){});     
-  });
-  
-    $('.h-accordion-mobile').slick({
-        autoplay: true,
-        arrows: false,
-        dots: true
+      var containerWidth = $(".h-accordion").width(),
+          slideCount = $(".item").length,
+          itemWidth = 50,
+          calcContentWidth = containerWidth - (itemWidth * (slideCount - 1)),
+          calcAccordionHeigth = (480 / 700) * calcContentWidth;
+      
+      /*(original height / original width) x new width = new height*/
+      $(".h-accordion").css('height', calcAccordionHeigth);
+      $(".info").first().show().animate({width: calcContentWidth + "px"});
+      
+      $(".item-wrapper").on("click", function () {
+        $(".item-wrapper").removeClass("active");
+        $(this).addClass("active");
+        
+        $(this).next().show()
+          .animate({width: calcContentWidth + "px"},function(){})
+          .siblings(".info")
+          .animate({width: "0px"},function(){});     
       });
-  
-})
-</script>
+      
+        $('.h-accordion-mobile').slick({
+            autoplay: true,
+            arrows: false,
+            dots: true
+          });
+      
+    })
+  </script>
+  </body>
+</html>
