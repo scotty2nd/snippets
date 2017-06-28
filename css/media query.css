@@ -1,19 +1,19 @@
 /*Erst ab 480px aktiv */
-@media screen and (min-width: 480px) {
+@media only screen and (min-width: 480px) {
     body {
         background-color: lightgreen;
     }
 }
 
 /*Bis 480px aktiv */
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
     body {
         background-color: lightgreen;
     }
 }
 
 /*Nur zwischen 600px und 800px*/
-@media screen (min-width: 600px) and (max-width: 800px) {
+@media only screen (min-width: 600px) and (max-width: 800px) {
   	body {
         background-color: lightgreen;
     }
