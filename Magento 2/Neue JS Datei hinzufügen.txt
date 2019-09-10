@@ -1,0 +1,33 @@
+Um eine neue Javascript Datei hinzuzufügen die zum Beispiel in einem Modul verwendet werden kann.
+Die JS Datei wird dann entweder in app/code/Hersteller/Modulname/view/frontend/web/js neu angelegt oder reinkopiert
+
+In folgendem Beispiel heißt das Modul OutdatedBrowserNotification und die JavaScript Datei outdated-browser-config.js
+
+//Inhalt der .phtml Datei
+<div id="outdated"></div>
+
+<script type="text/x-magento-init">
+    {
+        "#outdated": {
+            "Neusta_OutdatedBrowserNotification/js/outdated-browser-config": {}
+        }
+    }
+</script>
+
+//Inhalt der outdated-browser-config.js
+define([
+    './outdated-browser',
+    'domReady!'
+], function () {
+    'use strict';
+
+    return function() {
+        outdatedBrowserRework({
+            browserSupport: {
+                'IE': 11
+            },
+            requireChromeOnAndroid: false,
+            isUnknownBrowserOK: true
+        });
+    }
+});
