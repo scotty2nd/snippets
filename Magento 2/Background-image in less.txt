@@ -1,0 +1,3 @@
+Um in einer less Datei eine Hintergrund Grafik zu benutzen die im app/design/frontend/vendor/theme/web/images liegt kann folgender CSS Code verwendet werden
+
+background-image: url(../images/nanu-nana-packstation.png);
