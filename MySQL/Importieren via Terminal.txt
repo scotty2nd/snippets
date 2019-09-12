@@ -1,0 +1,7 @@
+/*Importieren via Console*/
+mysql -u root DATENBANKNAME < PFAD ZUR SQL DATEI
+mysql -u root -pPASSWORT DATENBANKNAME < PFAD ZUR SQL DATEI
+
+/*Exportieren via Console*/
+mysql -u root DATENBANKNAME > PFAD ZUR SQL DATEI
+mysql -u root -pPASSWORT DATENBANKNAME > PFAD ZUR SQL DATEI
