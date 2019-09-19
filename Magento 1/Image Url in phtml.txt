@@ -1,0 +1,4 @@
+Um ein Bild das zum Beispiel in skin/frontend/../default/img liegt in einer phtml Datei einzubinden.
+Kann folgendes Snippet verwendet werden:
+
+<img src="<?php echo $this->getSkinUrl('img/cow-logo.png') ?>" alt="<?php echo $this->getLogoAlt() ?>" title="<?php echo $this->getLogoAlt() ?>"/>
