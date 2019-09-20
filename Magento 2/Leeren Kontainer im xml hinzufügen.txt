@@ -1,0 +1,17 @@
+Soll ein leerer Din Kontainer via xml hinzugefügt werden.
+Muss man etwas tricksen und das Rendering erzwingen.
+Hierfür wurde ein Text Element mit einem erzwungenen Leerzeichen angelegt. Dadurch ist der Kontainer gefühlt und wird nun ausgegeben.
+ 
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main.content">
+            <container name="categoryImageTextWrap" as="categoryImageTextWrap" label="ScategoryImageTextWrap" htmlTag="div" htmlClass="categoryImageTextWrap">
+                <block class="Magento\Framework\View\Element\Text">
+                    <arguments>
+                        <argument name="text" xsi:type="string"><![CDATA[&nbsp;]]></argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
