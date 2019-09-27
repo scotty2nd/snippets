@@ -1,0 +1,8 @@
+In einer phtml Datei kann man Übersetzungen wie folgt nutzen:
+
+<?php echo __('Street') ?>
+
+Sollte es in einem Modul noch keine Übersetzungsdatei geben kann man dort einfach einen i18n Ordner anlegen und dort die Übersetzungsdateien reinpacken z.B. de_DE.csv.
+Der Inhalt wrd dann immer so auf gebaut:
+
+"Street", "Straße"
