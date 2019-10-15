@@ -1,0 +1,5 @@
+Übersetzungen können in phtml files folgendermaßen eingefügt werden.
+<?php echo $this->__('Birthday') ?>
+
+In der dazugehörigen translate.csv sieht das dann folgendermaßen aus
+"Birthday", "Geburtstag"
