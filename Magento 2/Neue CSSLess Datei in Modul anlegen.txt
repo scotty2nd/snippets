@@ -1,0 +1,14 @@
+Um eine neue less Datei hinzuzufügen die zum Beispiel in einem Modul verwendet werden kann.
+Die neue less Datei wird dann in app/code/Hersteller/Modulname/view/frontend/web/css/source neu angelegt und muss _module.less heißen.
+
+Zum Beispiel Ordnerstruktur für Mein MagentoModul
+
+MeinMagentoModul
+   - view
+      - frontend
+         - web
+            - css
+               - source
+                  _module.less
+
+Zu Beachten ist das in einer _module.less keine Variablen oder Mixins aus dem Projekt benutzt werden können.
