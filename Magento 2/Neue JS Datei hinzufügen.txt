@@ -16,7 +16,7 @@ In folgendem Beispiel heißt das Modul OutdatedBrowserNotification und die JavaSc
 
 //Inhalt der outdated-browser-config.js
 define([
-    './outdated-browser',
+    './outdated-browser', //inkludiert das Vendor script
     'domReady!'
 ], function () {
     'use strict';
@@ -31,3 +31,6 @@ define([
         });
     }
 });
+
+Bekannte Probleme:
+- Wird eine Fehlermeldung Mime Type Text Plain angezeigt wird die JavaScript Datei wahrscheinlich nicht gefunden hier sollte der Pfad überprüft werden. Rechtschreibfehler sind recht beliebt.

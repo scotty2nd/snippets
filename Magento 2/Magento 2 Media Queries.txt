@@ -1,0 +1,14 @@
+Magento 2 nutzt eigene Media Queries
+
+Folgender Media Query bewirkt das CSS Code nur in die Style Mobile geschrieben wird
+
+& when (@media-common = true) {
+    ...
+}
+
+Um zum Beispiel Anpassungen nur für Tablet und up also Dektop und größer anzugeben kann folgender Media Query verwendet werden
+
+ 
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+   ... 
+}
