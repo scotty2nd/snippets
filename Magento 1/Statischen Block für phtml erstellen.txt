@@ -1,0 +1,6 @@
+Es soll zum Beispiel ein Text über das Backend (Statischer Block) eingepflegt werden und im Frontend ausgegeben werden.
+Dann kann das folgende Snippet verwendet werden:
+
+Hierbei ist mobile_footer_promotion_text ein frei wählbarer Name
+
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile_footer_promotion_text')->toHtml() ?>
