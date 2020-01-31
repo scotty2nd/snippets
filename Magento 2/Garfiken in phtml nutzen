@@ -1,0 +1,5 @@
+Wenn man in einem phtml file png, jpg oder svg Grafiken genutzt werden möchten muss folgendes Snippet verwendet werden
+
+ <img src='<?php echo $this->getViewFileUrl('images/GW-logo.svg'); ?>' alt="Blume Glückswerkstatt">
+
+In diesem Fall muss das Bild in folgendem Ordner abgelegt werden app/design/frontend/Nanunana/nanuna/web/images
