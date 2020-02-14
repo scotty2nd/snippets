@@ -1,0 +1,74 @@
+Wenn ein neues Modul für Magento 2 erstellt werden soll.
+Muss zu aller erst folgende Ordner Struktur aufgebaut werden.
+
+Im Ordner app/code/NanuNana zum Beispiel einen Ordner Flyin (Modulname) anlegen
+
+Schritt 1: Dateistruktur anlegen
+Flyin
+  |
+  |---etc
+  |    |---module.xml
+  |
+  |---i18n
+  |     |---de_DE.csv
+  |
+  |---view
+  |     |---frontend
+  |		|---layout
+  |		      |---deafult.xml
+  |		|---templates
+  |			|---flyin.phtml
+  |		|---web
+  |		     |---css
+  |			  |---source
+  |				 |---_module.less
+  |---README.md
+  |---registration.php
+
+Schritt 2: README.md befüllen
+# NanuNana_Flyin
+
+Zusammenfassung:
+----------------
+Lorem Ipsum
+
+Schritt 3: registration.php befüllen
+<?php
+\Magento\Framework\Component\ComponentRegistrar::register(
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'NanuNana_Flyin',
+    __DIR__
+);
+
+Schritt 4: Module.xml befüllen
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="NanuNana_Flyin" setup_version="0.0.1" />
+</config>
+
+Schritt 5: bin/magento setup:upgrade auf der Console ausführen und gucken ob das neue Modul dort auftaucht. Zur Sicherheit kann im Ordner app/etc/ in der config.php kontroliert werden ob das Modul aktiviert ist.
+
+Schritt 6: Default.xml befüllen (Template laden)
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+    <body>
+        <referenceContainer name="root">
+            <block name="flyin" template="NanuNana_Flyin::flyin.phtml" />
+        </referenceContainer>
+    </body>
+</page>
+
+Schritt 7: flyin.phtml befüllen
+<div>
+    <a class="btn primary" href="" title="" target="_blank">
+        <?php echo __('Discover now') ?>
+    </a>
+</div>
+
+Schritt 8: Übersetzungen hinzufügen
+"Discover now","Jetzt entdecken"
+
+Schritt 9: Kunden spezifisches Styling ablegen
+	- In den Ordner app/design/frontend/Vendor/Themename/ wechseln und einen Ordner NanuNana_Flyin anlegen
+	- In diesem Ordner kann dann in web/css/source/ eine _extend.less angelegt werden
+
+
