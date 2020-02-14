@@ -1,0 +1,5 @@
+Einen Block via XML löschen
+
+Um einen Block via XML zu löschen muss folgendens Tag verwendet werden
+
+<referenceContainer name="footer" remove="true"/>
