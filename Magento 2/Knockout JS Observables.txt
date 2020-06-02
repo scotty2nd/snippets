@@ -1,0 +1,115 @@
+Um Knockout in einem Modul zu verwenden müssen einige Vorraussetzungen getroffen werden.
+Diese sind wie folgt:
+- benötigt ein beliebiges .phtml Template
+- eine dazugehörige JavaScript Datei
+- das KO Template selber
+
+Schritt 1: Ordner & Dateistruktur anlegen
+Flyin (Modulname)
+  |
+  |---view
+  |     |---frontend
+  |		  |---templates
+  |			|---flyin.phtml
+  |		  |---web
+  |		     |---js
+  |			  |---koexample.js
+  |			 |---template
+  |           |---example.html
+  |
+
+Schritt 2: Knockout in .phtml laden
+Eine .phtml Datei mindestens die folgenden Tags enthalten
+
+<div data-bind="scope: 'koexample'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "koexample": {
+                            "component": "Neusta_Flyin/js/koexample", //Modulname und JavaScript Name müssen hier übereinstimmen
+                            "template" : "Neusta_Flyin/example" //Template Name muss hier übereinstimmen
+                        }
+                    }
+                }
+            }
+        }
+</script>
+
+Schritt 3: JavaScript Datei befüllen
+In diesem Beispiel wird die koexample.js gezeigt und befüllt:
+
+define([
+    'uiComponent',
+    'domReady!'
+], function(ko, Component) {
+    'use strict';
+
+    return Component.extend({
+
+        defaults: {
+            checkGender: 'Male',
+            companyIsVisible: false
+        },
+
+        initialize: function () {
+            this._super();
+            this.observe(['checkGender', 'companyIsVisible');
+            console.log('initialize');
+        },
+
+        toggleCompany: function () {
+            this.companyIsVisible(!this.companyIsVisible());
+            console.log('changeTest');
+        }
+    });
+});
+
+Hier wurden als erstes im Defaults Block zwei Variablen angelegt die bereits Initialwerte enthalten
+Die erste Variable enthält zum Beispiel einen String "Male" und die zweite den boolschen Wert false.
+Diese beiden Variablen wurden innerhalb der initialize Funktion zu Observablen mit Hilfe der Methode this.observe gemacht.
+
+Möchte man nun auf diese Observables innerhalb von anderen Methoden oder Funktionen darauf zugreifen muss der Getter dafür angesprochen werden.
+Dieser hat folgende Syntax: this.companyIsVisible();
+
+Soll nun der Wert des Observables  geändert werden muss der Setter verwendet werden.
+Dieser hat folgende Syntax: this.companyIsVisible('Neuer Wert');
+
+
+Schritt 4: Knockout Template befüllen
+Mit den im vorherigen Schrit erzeugten Observables kann jetzt im KO Template gearbeitet werden.
+Das kann dann zum Beispiel so ausssehen:
+
+<p data-bind="visible: companyIsVisible">
+    Lorem ipsum Example Text
+</p>
+
+<div><input type = "radio" name = "gender" value = "Male"
+            data-bind = "checked: checkGender, click: function() {toggleCompany()}" /> Male</div>
+
+<div><input type = "radio" name = "gender" value = "Female"
+            data-bind = "checked: checkGender, click: function() {toggleCompany()}" /> Female</div>
+
+<div><p>You have selected: <span
+    data-bind = "text:checkGender "></span></p></div>
+
+In diesem KO Template wird ohne Interaktion schon der Initial Wert für checkGender angezeigt.
+Der Satz heißt dann "You have selected: Male".
+
+Wird nun auf ein Radio Button geklickt wird durch die gebindete checked Funktion das Observable checkGender mit dem Value aktualisiert und der Satz verändert sich.
+Ganz ähnlich funktioniert das ganze auch bei der ersten Zeile und dem data-bind visibile.
+Hier wird das companyIsVisible Observable allerdings nicht direkt gesetzt sondern über einen Click Eventlistener gesteuert.
+Dieses Click Event führt nämlich die toggleCompany() Methode aus. Diese wiederum setzt einen neuen Wert des companyIsVisible Observables und der Lorem Ipsum Text verschwindet oder zeigt sich.
+
+Zu Beachten:
+Die toggleCompany() methode muss nur in einer function(){} gewrappt werden wenn sie NICHT bei Page Load ausgeführt werden soll.
+
+
+
+
+
+

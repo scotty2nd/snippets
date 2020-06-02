@@ -14,13 +14,13 @@ Flyin
   |
   |---view
   |     |---frontend
-  |		|---layout
-  |		      |---deafult.xml
-  |		|---templates
+  |		  |---layout
+  |		    |---default.xml
+  |		  |---templates
   |			|---flyin.phtml
-  |		|---web
+  |		  |---web
   |		     |---css
-  |			  |---source
+  |			   |---source
   |				 |---_module.less
   |---README.md
   |---registration.php
