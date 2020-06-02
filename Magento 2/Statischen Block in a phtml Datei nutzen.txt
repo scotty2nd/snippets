@@ -1,0 +1,12 @@
+Wenn man einen statischen Block im Magento Backend angelegt hat und dessen Inhalt nun in einer phtml Datei verwenden möchte kann man folgendes Beispiel benutzen.
+
+<div class="shopping-cart-information">
+    <?php
+    echo $this->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('shopping-cart-information')
+        ->toHtml();
+    ?>
+</div>
+
+In diesesem Beispiel wurde ein Block mit dem Identifier shopping-cart-information angelegt
