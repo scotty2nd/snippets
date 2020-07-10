@@ -1,0 +1,84 @@
+Möchte man ein neues Theme für einen Storeview anlegen müssen folgende Schritte durchlaufen werden:
+
+Alle Dateien müssen im app/design/frontend/Hersteller/ef abgelegt werden wobei ef der Theme Name ist
+
+Schritt 1: Datei und Ordner Struktur anlegen
+           Die Ordner Struktur sollten wie unten angegeben aufgebaut werden
+
+
+            |--- i18n
+            |      |---de_DE.csv
+            |      |---en_US.csv
+            |
+            |--- media
+            |      |---preview.png
+            |
+            |--- web
+            |      |--- css
+            |            |---source
+            |                   |---_extend.less
+            |      |--- fonts
+            |        |--- custom-font.ttf
+            |
+            | composer.json
+            | registration.php
+            | theme.php
+
+
+Schritt 2: composer.json befüllen
+            Folgendes Snippet muss in die composer.json datei eingetragen werden
+
+            {
+              "name": "Hersteller/ef",
+              "description": "Lorem ipsum",
+              "config": {
+                "sort-packages": true
+              },
+              "require": {
+                "php": "~7.1.3||~7.2.0",
+                "magento/framework": "*",
+                "magento/theme-frontend-blank": "*"
+              },
+              "type": "magento2-theme",
+              "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+              ],
+              "autoload": {
+                "files": [
+                  "registration.php"
+                ]
+              }
+            }
+
+Schritt 3: registration.php befüllen
+           In dieser Datei wird der Ort des neuen Themes festgelegt in diesem Beispiel ist es "frontend/Hersteller/ef" wobei ef für den Namen des Themes steht.
+           Die Datei sollte dann wie folgt aussehen:
+
+           <!--
+           /**
+            * Copyright © 2020. All rights reserved.
+            */
+           -->
+
+           use \Magento\Framework\Component\ComponentRegistrar;
+
+           ComponentRegistrar::register(ComponentRegistrar::THEME, 'frontend/vendor/ef', __DIR__);
+
+Schritt 4: theme.xml befüllen
+           In der theme.xml wird der Titel des neuen Theme sowie das zu erbende Theme (parent) und auch das Vorschaubild eingetragen
+           Die Datein sollte dann wie folgt aussehen:
+
+           <!--
+           /**
+            * Copyright © 2020. All rights reserved.
+            */
+           -->
+
+           <theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+               <title>Ebbe_und_Flut</title>
+               <parent>vendor/stoertebeker</parent>
+               <media>
+                   <preview_image>media/preview.png</preview_image>
+               </media>
+           </theme>

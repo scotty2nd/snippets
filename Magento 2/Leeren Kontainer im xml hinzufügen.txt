@@ -1,6 +1,8 @@
-Soll ein leerer Din Kontainer via xml hinzugefügt werden.
-Muss man etwas tricksen und das Rendering erzwingen.
-Hierfür wurde ein Text Element mit einem erzwungenen Leerzeichen angelegt. Dadurch ist der Kontainer gefühlt und wird nun ausgegeben.
+Soll ein leerer Div Kontainer via xml hinzugefÃ¼gt werden.
+Muss man etwas tricksen und das Rendering erzwingen weil normalerweise leere Div Kontainer nicht ausgegeben werden.
+HierfÃ¼r wurde ein Text Element mit einem erzwungenen Leerzeichen angelegt. Dadurch ist der Kontainer gefÃ¼llt und wird nun ausgegeben.
+
+Zu sehen ist eine Beispiel XML Datei
  
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>

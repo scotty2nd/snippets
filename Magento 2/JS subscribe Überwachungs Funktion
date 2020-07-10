@@ -1,0 +1,29 @@
+Möchte man zum Beispiel den Gesamt Preis im Warenkorb in der Summary Box an einer anderen Stelle einbauen.
+Empfiehlt es sich die subscribe() Funktion zu nutzen. Diese Funktioniert ähnlich wie ein Observable und überwacht z.B. den Gesamt Preis.
+Das wirklich praktische an dieser Funktion ist das wenn sich die Artikel Menge verändert wird der Preis automatisch neu berechnet.
+
+Im folgenden ist ein Beispiel für die Verwendung einer solchen Funktion zu sehen:
+
+define([
+    'jquery',
+    'uiComponent',
+    'Magento_Checkout/js/model/totals',
+    'Magento_Checkout/js/model/quote',
+    'Magento_Catalog/js/price-utils'
+], function ($, Component, totals, quote, priceUtils) {
+    'use strict';
+
+    return Component.extend({
+        initialize: function() {
+            this._super();
+
+            totals.totals.subscribe(function () {                                                            // Überwacht den Gesamtpreis in der Summary Box und gibt ihn im Sticky Banner aus
+                let baseGrandPrice = totals.totals()['base_grand_total'],                                    // Holen den aktuellen Gesamtpreises z.B. 10.4
+                    formatedBaseGrandPrice = priceUtils.formatPrice(baseGrandPrice, quote.getPriceFormat()); // Formatiert den Preis mit , und zwei Nachkommastellen
+
+                $( stickyGoToCheckoutWrapper + ' .totalPrice').html(formatedBaseGrandPrice);                 // Ausgabe des formatierten Preises
+            });
+        }
+    });
+
+});

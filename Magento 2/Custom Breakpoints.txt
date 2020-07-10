@@ -3,15 +3,19 @@ Custom Breakpoints in Magento 2 erstellen
 Wenn man zusätzlich zu den schon vorhandenen Breakpoints in der responsive.less Breakpoints benötigt. 
 Kann mit folgenden Schritten ein oder mehrere eigene Breakpoints angelegt werden. 
 
-	- _variables.less aus parent Theme (entweder luma oder blank) in app/design/frontend/vendor/themename/web/css/source kopieren 
-	- Breakpoint zum Beispiel @screen_l_nanunana: 1025px; anlegen
-	- _responsive.less aus parent Theme (entweder luma oder blank) in app/design/frontend/vendor/themename/web/css/source/lib kopieren  
+	- _variables.less aus parent Theme (entweder luma oder blank) in app/design/frontend/vendor/themename/web/css/source kopieren
+
+	- Breakpoint zum Beispiel @screen_l_nanunana: 1025px; in dieser Datei anlegen
+
+	- _responsive.less aus parent Theme (entweder luma oder blank) in app/design/frontend/vendor/themename/web/css/source/lib kopieren
+
 	- in der responsive.less muss dann aber auch ein neues mixin für den custom Breakpoint hinzugefügt werden.
 	  Beispiel:     
 		@media all and (min-width: @screen_l_nanunana),
     		print {
         	   .media-width('min', @screen_l_nanunana);
     		}
+
 	- Jetzt kann der neue Breakpoint in einer _extend.less auf folgenderweise verwendet werden:
 		.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen_l_nanunana) {
 		  ...

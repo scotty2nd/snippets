@@ -1,0 +1,19 @@
+Möchte man ein neues phtml Template einbinden muss dies in den meisten Fällen über XML geschehen.
+Dazu habe ich hier ein kleines Beispiel:
+
+Schritt 1: .phtml Dateil im Ordner templates erstellen z.B. header-social-icons.phtml
+
+Schritt 2: ReferenceBlock in XML Datei auswählen Block erstellen und zuvor erstelltes Template laden
+           In einer XML Datei zum Beispiel der default.xml habe ich den referenceBlock nav-actions ausgewählt.
+           In diesem ReferenceBlock wird nun ein neuer Block mit dem namen "header-social-icons" erstellt und das Template "header-social-icons.phtml.phtml" aus dem Magento_Theme Modul geladen
+
+           Die XML Datei sollte dann wie folgt aussehen:
+           <referenceBlock name="nav-actions">
+               <block class="Magento\Framework\View\Element\Template"
+                      name="header-social-icons"
+                      template="Magento_Theme::header-social-icons.phtml"
+               />
+           </referenceBlock>
+
+
+

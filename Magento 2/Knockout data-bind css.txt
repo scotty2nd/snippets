@@ -1,0 +1,14 @@
+In Knockout Templates können CSS Klassen via data-bindings gesetzt werden.
+Hier einmal ein paar Beispiele:
+
+Hier wird immer eine CSS Klasse my-custom-class gesetzt der output sieht dann folgender Maßen aus class="field my-custom-class"
+<div class="field" data-bind="css: my-custom-class">
+
+
+Hier wird die CSS Klasse abhängig von Obersavble gefüllt, Ist der Inhalt von Observable z.B "new-class" so wäre der Output class="field new-class".
+Die Besonderheit ist hier das sich die CSS Klasse hier dynamisch durch das Observable ändern lässt.
+<div class="field" data-bind="css: observable()">
+
+
+Hier wird die CSS Klasse hide nur gesetzt wenn im Feldnamen .company vorkommt. Es ist möglich CSS Klassen mit einer If Anweisung zu verbinden
+<div class="field" data-bind="css: {hide: element.dataScope.indexOf('.company') !== -1}">

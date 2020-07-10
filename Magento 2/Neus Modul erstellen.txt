@@ -25,12 +25,14 @@ Flyin
   |---README.md
   |---registration.php
 
+
 Schritt 2: README.md befüllen
 # NanuNana_Flyin
 
 Zusammenfassung:
 ----------------
 Lorem Ipsum
+
 
 Schritt 3: registration.php befüllen
 <?php
@@ -40,13 +42,16 @@ Schritt 3: registration.php befüllen
     __DIR__
 );
 
+
 Schritt 4: Module.xml befüllen
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
     <module name="NanuNana_Flyin" setup_version="0.0.1" />
 </config>
 
+
 Schritt 5: bin/magento setup:upgrade auf der Console ausführen und gucken ob das neue Modul dort auftaucht. Zur Sicherheit kann im Ordner app/etc/ in der config.php kontroliert werden ob das Modul aktiviert ist.
+
 
 Schritt 6: Default.xml befüllen (Template laden)
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
@@ -57,6 +62,7 @@ Schritt 6: Default.xml befüllen (Template laden)
     </body>
 </page>
 
+
 Schritt 7: flyin.phtml befüllen
 <div>
     <a class="btn primary" href="" title="" target="_blank">
@@ -64,8 +70,10 @@ Schritt 7: flyin.phtml befüllen
     </a>
 </div>
 
+
 Schritt 8: Übersetzungen hinzufügen
 "Discover now","Jetzt entdecken"
+
 
 Schritt 9: Kunden spezifisches Styling ablegen
 	- In den Ordner app/design/frontend/Vendor/Themename/ wechseln und einen Ordner NanuNana_Flyin anlegen

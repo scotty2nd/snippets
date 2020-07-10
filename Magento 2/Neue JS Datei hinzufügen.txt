@@ -1,7 +1,7 @@
-Um eine neue Javascript Datei hinzuzufügen die zum Beispiel in einem Modul verwendet werden kann.
+Um eine neue Javascript Datei hinzuzufï¿½gen die zum Beispiel in einem Modul verwendet werden kann.
 Die JS Datei wird dann entweder in app/code/Hersteller/Modulname/view/frontend/web/js neu angelegt oder reinkopiert
 
-In folgendem Beispiel heißt das Modul OutdatedBrowserNotification und die JavaScript Datei outdated-browser-config.js
+In folgendem Beispiel heiï¿½t das Modul OutdatedBrowserNotification und die JavaScript Datei outdated-browser-config.js
 
 //Inhalt der .phtml Datei
 <div id="outdated"></div>
@@ -17,8 +17,9 @@ In folgendem Beispiel heißt das Modul OutdatedBrowserNotification und die JavaSc
 //Inhalt der outdated-browser-config.js
 define([
     './outdated-browser', //inkludiert das Vendor script
+    'jquery',
     'domReady!'
-], function () {
+], function ($) {
     'use strict';
 
     return function() {
@@ -33,4 +34,4 @@ define([
 });
 
 Bekannte Probleme:
-- Wird eine Fehlermeldung Mime Type Text Plain angezeigt wird die JavaScript Datei wahrscheinlich nicht gefunden hier sollte der Pfad überprüft werden. Rechtschreibfehler sind recht beliebt.
+- Wird eine Fehlermeldung Mime Type Text Plain angezeigt wird die JavaScript Datei wahrscheinlich nicht gefunden hier sollte der Pfad ï¿½berprï¿½ft werden. Rechtschreibfehler sind recht beliebt.

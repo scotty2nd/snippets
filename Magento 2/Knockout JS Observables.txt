@@ -109,6 +109,11 @@ Zu Beachten:
 Die toggleCompany() methode muss nur in einer function(){} gewrappt werden wenn sie NICHT bei Page Load ausgeführt werden soll.
 
 
+Bekannte Fehler:
+- Wenn man Knockout Templates via Layoutprocessor hinzufügt aktualisiert sich das Observable nicht
+
+
+
 
 
 
