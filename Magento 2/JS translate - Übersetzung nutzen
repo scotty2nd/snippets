@@ -1,0 +1,25 @@
+Möchte man in einer JavaScript Datei auf die Magento Übersetzungen drauf zugreifen muss man folgende Dinge hinzufügen
+
+Schritt 1: 'mage/translate' hinzufügen
+
+Um Übersetzungen zu nutzen muss 'mage/translate' im define Block hinzugefügt werden und $t in der Functionsklammer definiert werden
+define([
+    'Magento_Ui/js/form/form',
+    'jquery',
+    'mage/translate',
+    'Magento_Customer/js/customer-data',
+    'Magento_Checkout/js/model/totals'
+], function (Component, $, $t, customerData, totals) {
+    'use strict';
+    return Component.extend({
+        .....
+    });
+});
+
+
+Schritt 2: Übersetzung aufrufen
+
+Um die Übersetzungen jetzt wirklich zu nutzen kann so vorgegangen werden:
+text = $t('Available in your store');
+
+Hier wird die Übersetzung für 'Available in your store' in die Variable text geladen
