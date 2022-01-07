@@ -1,14 +1,14 @@
-Wie erstelle ich einen Pagebuilder Content Type
+Wie erstelle ich einen Pagebuilder Content Type?
 
 Als erstes starte das Tool pbmodules im Terminal mit diesem Snippet:
 
-npx https://github.com/magento-devdocs/pbmodules.git
+    npx https://github.com/magento-devdocs/pbmodules.git
 
 Wähle dann den Menüpunkt Custom aus und folge den Anweisungen im Terminal
 
 In meinem Beispiel habe ich ein einen neuen Content Type PagebuilderQuote erstellt.
 
-Die generierte Ordner Struktur wird im Projekt Root Verzeichnis abgelegt und sollte so aussehen
+Die generierte Ordner Struktur wird im Projekt Root Verzeichnis abgelegt und sollte nun so aussehen:
 
 - Neusta
   -- PagebuilderQuote
@@ -62,9 +62,9 @@ Die generierte Ordner Struktur wird im Projekt Root Verzeichnis abgelegt und sol
      README.md
      registration.php
 
-Als nächstes kopiert man den PagebuilderQuote oder in App/Code/Neusta
+Als nächstes kopiert man den PagebuilderQuote Ordner in App/Code/Neusta
 
-Dann muss ein bin/magento setup:upgrade ausgeführt und im Anschluss ein Cache Clean gemaht werden.
+Dann muss bin/magento setup:upgrade ausgeführt und im Anschluss ein Cache Clean gemacht werden.
 
-Wenn man sich nun im Backend einloggt und eine Seite mit dem Pagebuilder bearbeitet hat man nun den Neuen Content Type links in der Toolbox und kann ihn auswählen.
+Wenn man sich nun im Backend einloggt und eine Seite mit dem Pagebuilder bearbeitet hat man nun den Neuen Quote Content Type links in der Toolbox und kann ihn auswählen.
 
