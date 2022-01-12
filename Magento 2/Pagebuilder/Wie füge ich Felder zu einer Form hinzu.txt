@@ -1,0 +1,143 @@
+Möchte man für seine Appearance oder seinen Content Type ein Fieldset und/oder Feld hinzufügen
+muss dies im Config File gemacht werden der Pfad hier zu ist am Beispiel vom Qute Content Type folgender:
+
+    Neusta/PagebuilderQuote/view/adminhtml/pagebuilder/content_type/neusta_pagebuilderquote.xml
+
+hier wird als kind element einer appearance ein neues element mit dem Namen 'author' definiert
+Dieser kann beliebig gewählt werden. Im folgenden wurde ein simples Input Feld hinzugefügt:
+
+        <element name="author">
+            <html name="author" converter="Magento_PageBuilder/js/converter/html/tag-escaper"/>
+        </element>
+
+Zu dieser Definition gehört auch noch eine passende ui-componente in meinem Beispiel findet man die Form Datei unter folgendem Pfad:
+
+    Neusta/PagebuilderQuote/view/adminhtml/ui_component/pagebuilder_neusta_pagebuilderquote_form.xml
+
+In dieser Datei kann man richtig viel machen zum Beispiel kann man labels und placeholder bearbeiten und vieles mehr.
+Im folgenden Beispiel wurde ein neues Fieldset mit einem Input Feld erstellt:
+
+    <fieldset name="quote_fieldset" sortOrder="15" component="Magento_PageBuilder/js/form/element/dependent-fieldset">
+        <settings>
+            <label translate="true">Quote Configuration</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="author" sortOrder="20" formElement="input">
+            <settings>
+                <dataScope>author</dataScope>
+                <dataType>text</dataType>
+                <label translate="false">Author</label>
+                <placeholder translate="true">Scott Doe</placeholder>
+            </settings>
+        </field>
+    </fieldset>
+
+Die nun angelegten Fieldsets und Felder werden nun im Backend unter den Content Type Settings angezeigt.
+Dieses Fieldset/Field hat aber noch keinerlei Funktion. Hierzu müssen noch ein paar Sachen erledigt werden.
+
+Als nächstes wird die preview.js bearbeitet damit unser eingegebener Text sowhl in der Vorschau als auch im Frontend angezeigt wird.
+Die Datei ist hier zu finden:
+
+    Neusta/PagebuilderQuote/view/adminhtml/web/js/content-type/neusta-pagebuilderquote/preview.js
+
+In meinem Fall brauche ich hier so gut wie gar nichts machen. Die Datei enhält nun das Minimum und sieht bislang so aus:
+
+    define([
+        'Magento_PageBuilder/js/content-type/preview',
+    ], function (
+        PreviewBase,
+    ) {
+        'use strict';
+
+        var $super;
+
+        /**
+         * Quote content type preview class
+         *
+         * @param parent
+         * @param config
+         * @param stageId
+         * @constructor
+         */
+        function Preview(parent, config, stageId) {
+            PreviewBase.call(this, parent, config, stageId);
+        }
+
+        Preview.prototype = Object.create(PreviewBase.prototype);
+        $super = PreviewBase.prototype;
+
+        /**
+         * Modify the options returned by the content type
+         *
+         * @returns {*}
+         */
+        Preview.prototype.retrieveOptions = function () {
+            var options = $super.retrieveOptions.call(this, arguments);
+
+            return options;
+        };
+
+        return Preview;
+    });
+
+Weiter gehts mit den beiden Knockout Templates Preview.html und Master.html
+Diese sind beide im folgenden Ordner zu finden:
+
+    Neusta/PagebuilderQuote/view/adminhtml/web/template/content-type/neusta-pagebuilderquote/default
+
+In der preview.html kann nun mit dieser Zeile der eingegebne Author ausgegeben werder:
+
+    <span class="quote-author" attr="data.author.attributes" ko-style="data.author.style" css="data.author.css" data-bind="liveEdit: { field: 'author', placeholder: $t('Enter Author') }"></span>
+
+Ganz ähnlich sieht es beim master.html aus das für die AUsgabe im Frontend zuständig ist:
+
+    <span class="quote-author" attr="data.author.attributes" ko-style="data.author.style" html="data.author.html"></span>
+
+Nun sollte der eingegebene Text sowohl in der Vorschau im Backend als auch im Frontend angezeigt werden allerdings ohne jegliches Styling
+
+Für das Frontend Styling wird folgende Ordner Struktur empfohlen
+
+--frontend
+  --web
+    --css
+      --source
+        _module.less
+        --content-type
+          --neusta-pagebuilderquote
+            _import.less
+            _default.less
+
+In der _module.less soll eigenlich nur die _import.less importiert werden also hier soll möglichst kein CSS Styling rein obwohl das funktioniert.
+Importiert werden less Datein wie folgt:
+
+    @import 'content-type/neusta-pagebuilderquote/_import.less';
+
+In der _import.less werden dann alle appearance less dateien aufgeführt auch hier sollte möglichst kein CSS code eingetragen werden.
+In meinem Beispiel sieht diese so aus:
+
+    @import '_default.less';
+
+Die _default.less enthält dann alle fürs Frontend relevanten Styles.
+Jetzt hat aber die Preview im Backend immer noch kein Styling.
+Hierzu muss ein extra styling im adminhtml Ordner abgelegt werden.
+Die Ordnerstruktursollte dann so aussehen:
+
+--adminhtml
+  --web
+    --css
+      --source
+        _module.less
+        --content-type
+          --neusta-pagebuilderquote
+            _default.less
+            _import.less
+
+Ansich ist es die selbe Ordner struktur wie vor hin aber jetzt im adminhtml Ordner
+
+Jetzt ein bin/grunt clean und danach ein bin/magento cache:clean ausführen und alles sollte schick aussehen
+
+
+
+
+

@@ -73,13 +73,16 @@ Aktuell wird es unter der Gruppe Layout.
 Ich folgenden zeige ich wi man Icon/Name und Position verändert. Dies wird alles im Config FIle gemacht.
 Diese findet man hier:
 
-src/app/code/Neusta/PagebuilderQuote/view/adminhtml/pagebuilder/content_type/neusta_pagebuilderquote.xml
+    src/app/code/Neusta/PagebuilderQuote/view/adminhtml/pagebuilder/content_type/neusta_pagebuilderquote.xml
 
 In Zeile 4 kann man dann den Namen des neuen Content Types vergben
 In Zeile 9 kann dann dann auch ein eigenes icon eingesetzt werden dieses svg muss dann unter folgendem Pfand mit dem angegebenen Dateinamen abgelegt werden
 
-Neusta/PagebuilderQuote/view/adminhtml/web/css/images/content-type/neusta-pagebuilderquote/appearance/icon-pagebuilderquote.svg
+    Neusta/PagebuilderQuote/view/adminhtml/web/css/images/content-type/neusta-pagebuilderquote/appearance/icon-pagebuilderquote.svg
 
 und in Zeile 5 und Zeile 10 kann man zusätzlicch noch die Position verändern
 hier kann man einmal die section verändern zum Beispiel 'elements' und eine sort order von '30'
+
+Wenn dieser Content Type mit pbmodules erstellt wurde dann ist schon ein Beispiel Fieldset und Feld erstellt.
+
 
