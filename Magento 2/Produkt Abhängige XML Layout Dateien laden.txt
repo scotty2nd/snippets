@@ -1,0 +1,95 @@
+Möchte man z.b. auf den Produkt detail Seiten etwas einblenden welches aber nur für bestimmte Produkte gilt kann man im Backend dazugehörige Attribute anlegen.
+Zum Beispiel ein boolean mit dem Namen loremipsum.
+
+Schritt 1:
+in dein Modul Ordner navigieren und in den etc Ordner wechseln
+
+hier muss nun eine di.xml anlegt werden wenn noch keine existiert.
+
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Helper\Product\View" type="Neusta\Exdatis\Helper\Product\View" />
+</config>
+
+Hier ist wichtig das der Modul Pfad angepasst werden muss. Da sonst die Datei nicht gefunden werden kann.
+
+Schritt 2:
+View.php anlegen.
+Sollte im Modul Root Ordner noch kein Helper Ordner existieren muss folgende Ordner Struktur anlegt werden:
+
+--Helper
+  --Product
+      -View.php
+
+<?php
+namespace Neusta\Exdatis\Helper\Product;
+use Magento\Framework\View\Result\Page as ResultPage;
+/**
+ * Catalog category helper
+ */
+class View extends \Magento\Catalog\Helper\Product\View
+{
+    public function initProductLayout(ResultPage $resultPage, $product, $params = null)
+    {
+        $settings = $this->_catalogDesign->getDesignSettings($product);
+        $pageConfig = $resultPage->getConfig();
+        if ($settings->getCustomDesign()) {
+            $this->_catalogDesign->applyCustomDesign($settings->getCustomDesign());
+        }
+        // Apply custom page layout
+        if ($settings->getPageLayout()) {
+            $pageConfig->setPageLayout($settings->getPageLayout());
+        }
+        $urlSafeSku = rawurlencode($product->getSku());
+        if ($params && $params->getBeforeHandles()) {
+            foreach ($params->getBeforeHandles() as $handle) {
+                $resultPage->addPageLayoutHandles(['loremipsum' => $product->getLoremipsum(), 'id' => $product->getId(), 'sku' => $urlSafeSku], $handle);
+                $resultPage->addPageLayoutHandles(['type' => $product->getTypeId()], $handle, false);
+            }
+        }
+        $resultPage->addPageLayoutHandles(['loremipsum' => $product->getLoremipsum(), 'id' => $product->getId(), 'sku' => $urlSafeSku]);
+        $resultPage->addPageLayoutHandles(['type' => $product->getTypeId()], null, false);
+        if ($params && $params->getAfterHandles()) {
+            foreach ($params->getAfterHandles() as $handle) {
+                $resultPage->addPageLayoutHandles(['loremipsum' => $product->getLoremipsum(), 'id' => $product->getId(), 'sku' => $urlSafeSku], $handle);
+                $resultPage->addPageLayoutHandles(['type' => $product->getTypeId()], $handle, false);
+            }
+        }
+        // Apply custom layout update once layout is loaded
+        $update = $resultPage->getLayout()->getUpdate();
+        $layoutUpdates = $settings->getLayoutUpdates();
+        if ($layoutUpdates) {
+            if (is_array($layoutUpdates)) {
+                foreach ($layoutUpdates as $layoutUpdate) {
+                    $update->addUpdate($layoutUpdate);
+                }
+            }
+        }
+        $currentCategory = $this->_coreRegistry->registry('current_category');
+        $controllerClass = $this->_request->getFullActionName();
+        if ($controllerClass != 'catalog-product-view') {
+            $pageConfig->addBodyClass('catalog-product-view');
+        }
+        $pageConfig->addBodyClass('product-' . $product->getUrlKey());
+        if ($currentCategory instanceof \Magento\Catalog\Model\Category) {
+            $pageConfig->addBodyClass('categorypath-' . $this->categoryUrlPathGenerator->getUrlPath($currentCategory))
+                ->addBodyClass('category-' . $currentCategory->getUrlKey());
+        }
+        return $this;
+    }
+}
+
+Hier muss ebenfalls der Namespace am Anfang auf dein Modul angepasst werden und loremipsum muss gegen dein verwendeten Attribute Code ausgetauscht werden
+
+
+
+Schritt 3:
+XML Datei anlegen
+
+Im Modul layout Ordner muss nun eine Datei mit folgendem Namen angelegt werden "catalog_product_view_loremipsum_1.xml".
+Wobei auch hier loremipsum der Attribute Code ist
+
+
+Wenn alles funktioniert sollte nun im Backend ein Lorem Ipsum Toggle sein. Aktiviert man diesen sollte ein neues XML File geladen werden das die Produkt Detail Seite optisch beinflusst
+
+
