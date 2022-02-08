@@ -1,0 +1,20 @@
+Möchte man auf ein Product Attribute in einem phtml zugreifen kann folgendes Snippet verwenden
+
+<?php
+    /**
+     * Product view template
+     *
+     * @var $block \Magento\Catalog\Block\Product\View\Description
+     */
+    $_product = $block->getProduct();
+    $attribute_value = $_product->getData('path_to_configurator');
+?>
+
+<?= $attribute_value ?>
+
+Hierbei ist zu beachten das der Block im XML den oben stehenden Block bereitstellt.
+Das sollte dann so aussehen:
+
+<referenceContainer name="page.wrapper">
+    <block class="Magento\Catalog\Block\Product\View\Description" name="regnumberform" template="Neusta_RegNumberForm::regnumberform.phtml" />
+</referenceContainer>
