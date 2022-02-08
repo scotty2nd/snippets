@@ -1,0 +1,131 @@
+Möchte man die Produkt Attribute automtisch beim setup:upgrade anlegen, kann man dies mit einer UpgradeData.php machen.
+
+Diese Datei muss dann in deinem Modul Root in folgendem Ordner abgelegt werden
+
+-- Setup
+    -- UpgradeData.php
+
+<?php
+
+namespace Neusta\RegNumberForm\Setup;
+
+use Magento\Framework\Setup\UpgradeDataInterface;
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Eav\Setup\EavSetup;
+use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Catalog\Model\Product;
+
+/**
+ * Class UpgradeData
+ * @package NanuNana\ProductAvailability\Setup
+ */
+class UpgradeData implements UpgradeDataInterface
+{
+    /**
+     * @var EavSetup
+     */
+    private $eavSetup;
+
+    /**
+     * @var EavSetupFactory
+     */
+    private $eavSetupFactory;
+
+    /**
+     * UpgradeData constructor.
+     * @param EavSetup $eavSetup
+     */
+    public function __construct(
+        EavSetup $eavSetup,
+        EavSetupFactory $eavSetupFactory
+    ) {
+        $this->eavSetup = $eavSetup;
+        $this->eavSetupFactory = $eavSetupFactory;
+    }
+
+    /**
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
+    public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    {
+        $setup->startSetup();
+
+        if ($context->getVersion() && version_compare($context->getVersion(), '1.0.0', '<')) {
+            /** @var EavSetup $eavSetup */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+
+            $eavSetup->addAttribute(Product::ENTITY,
+                'show_regnumber_form',
+                [
+                    'group' => 'General',
+                    'type' => 'int',
+                    'backend' => '',
+                    'frontend' => '',
+                    'label' => 'Show Regnumber Form',
+                    'input' => 'boolean',
+                    'class' => '',
+                    'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    'visible' => true,
+                    'required' => false,
+                    'user_defined' => false,
+                    'default' => 0,
+                    'searchable' => false,
+                    'filterable' => false,
+                    'comparable' => false,
+                    'visible_on_front' => false,
+                    'used_in_product_listing' => false,
+                    'unique' => false,
+                    'is_used_for_promo_rules' => false,
+                    'apply_to' => ''
+                ]
+            );
+
+            $eavSetup->addAttribute(Product::ENTITY,
+                'path_to_configurator',
+                [
+                    'group' => 'General',
+                    'type' => 'varchar',
+                    'backend' => '',
+                    'frontend' => '',
+                    'label' => 'Path to configurator',
+                    'input' => 'text',
+                    'class' => '',
+                    'source' => '',
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    'visible' => true,
+                    'required' => false,
+                    'user_defined' => false,
+                    'default' => 0,
+                    'searchable' => false,
+                    'filterable' => false,
+                    'comparable' => false,
+                    'visible_on_front' => false,
+                    'used_in_product_listing' => false,
+                    'unique' => false,
+                    'is_used_for_promo_rules' => false,
+                    'apply_to' => ''
+                ]
+            );
+        }
+
+        $setup->endSetup();
+    }
+}
+
+Hier muss auf dem Namesspace am anfang der Datei geachtet werden
+
+Außerdem muss die module.xml wie folgt aussehen:
+
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="Neusta_RegNumberForm" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Catalog"/>
+        </sequence>
+    </module>
+</config>
+
+Hier ist die Abhängigkeit zum Magento Catalog in der sequence wichtig
